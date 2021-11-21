@@ -1,4 +1,4 @@
-### Hela, I'm Murhy West 👋
+### Hela, I'm Murhy Wst 👋
 - 🔭 I’m currently working on west
 - 🌱 I’m currently learning flutter
 - 👯 I’m looking to collaborate on youtube
