@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
+  <title>5_useful_layouts</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" >
+  <!-- <link rel="stylesheet" href="./css_reset.css"> -->
+  <style>
+    *,*::before,*::after{
+      box-sizing:border-box
+    }
+    :root{
+      --v1:#fff;
+    }
+    body{
+      margin-inline: auto;
+      max-width: 1024px;
+      font-family: system-ui;
+      font-size: 1.25rem;
+      color: white;
+      background: #121212;
+    }
+    section {
+      outline: 3px solid hotpink;
+      background-color: #ddd;
+      margin:1rem auto;
+      padding: 1rem;
+    }
+    /* demo 1 */
+    section div a {
+      background-color: rgb(22, 19, 212);
+      color:#fff;
+      padding-inline: 5px;
+      line-height: 1.5;
+    }
+    .demo1 > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .demo1 > div >* {
+      flex:1;
+    }
+    /* demo 2 */
+    .demo2 >div {
+      --min-column-size:16rem;
+      display: grid;
+      gap:1rem;
+      grid-template-columns: 
+        repeat(auto-fit,minmax(min(var(--min-column-size),100%),1fr));
+    }
+    /* demo 3 reel */
+    .reel{
+      --gap:1rem;
+      display: grid;
+      gap:var(--gap);
+      grid-auto-flow: column;
+      /* grid-auto-columns: 30%; */
+      grid-auto-columns: calc(50% - (var(--gap)/2));
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-padding: var(--gap);
+    }
+    .reel > * {
+      scroll-snap-align: start;
+    }
+    /* demo 4 */
+    .demo4 div{
+      background-color: rgb(249, 207, 207);
+      outline: 2px solid rgb(252, 118, 252);
+      padding-inline: 1rem;
+    }
+    .demo4 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: start;
+      gap: 1rem;
+    }
+    .demo4 > :first-child{
+      flex-basis:340px;
+      flex-grow: 999;
+    }
+    .demo4 > :last-child {
+      flex-basis:120px;
+      flex-grow: 1;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="doc-container">
+    <h2>layout 1: flex-wrap</h2>
+    <section class="demo1">
+      <div class="cluster">
+        <a href="#">Lorem, ipsm.</a><a href="#">Lorem, ipsum dolor. Lorem, ipsum.</a><a href="#">Lorem, ipsum.</a><a href="#">Lorem, ipsum.</a><a href="#">L.</a><a href="#">Lorem, ipsum.</a><a href="#">Lorem, ipsum. Lorem ipsum dolor sit.</a><a href="#">Lore.</a><a href="#">Lm.</a><a href="#">Lorem, ipsum.</a>
+      </div>
+    </section>
+    <!-- demo 2 -->
+    <h2>layout 2: grip auto-fit</h2>
+    <section class="demo2">
+      <div class="cluster">
+        <a href="#">Lorem, ipsm.</a><a href="#">Lorem, ipsum dolor. Lorem, ipsum.</a><a href="#">Lorem, ipsum.</a><a href="#">Lorem, ipsum.</a><a href="#">L.</a><a href="#">Lorem, ipsum.</a><a href="#">Lorem, ipsum. Lorem ipsum dolor sit.</a><a href="#">Lore.</a><a href="#">Lm.</a><a href="#">Lorem, ipsum.</a>
+      </div>
+    </section>
+
+    <!-- demo 3 -->
+    <h2>layout 3: reel scroll</h2>
+    <section class="demo3">
+      <div class="reel">
+        <a href="#">Lorem, ipsm.</a><a href="#">Lorem, ipsum dolor. Lorem, ipsum.</a><a href="#">Lorem, ipsum.</a><a href="#">Lorem, ipsum.</a><a href="#">L.</a><a href="#">Lorem, ipsum.</a><a href="#">Lorem, ipsum. Lorem ipsum dolor sit.</a><a href="#">Lore.</a><a href="#">Lm.</a><a href="#">Lorem, ipsum.</a>
+      </div>
+    </section>
+    
+    <!-- demo 4 aside -->
+    <h2>layout 4 side bar</h2>
+    <section class="demo4">
+      <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nostrum obcaecati, quas laudantium iure recusandae cumque laborum quam aliquam nihil.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nostrum obcaecati, quas laudantium iure recusandae cumque laborum quam aliquam nihil.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nostrum obcaecati, quas laudantium iure recusandae cumque laborum quam aliquam nihil.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nostrum obcaecati, quas laudantium iure recusandae cumque laborum quam aliquam nihil.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nostrum obcaecati, quas laudantium iure recusandae cumque laborum quam aliquam nihil.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nostrum obcaecati, quas laudantium iure recusandae cumque laborum quam aliquam nihil.</p>
+      </div>
+      <div>
+        <P>Lorem  dolor sit amet consectetur  elit.</P>
+        <P>Lorem ipsum dolor  amet  adipisicing elit.</P>
+        <P>Lorem ipsum dolor sit amet   elit.</P>
+      </div>
+    </section>
+
+  <!-- doc-container end --></div>
+  <!-- 2023-03-03 13:49:09 -->
+  <script type="module">
+    // import {} from './js/lib';
+  </script>
+</body>
+</html>

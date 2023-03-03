@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
+  <title>css_toogle_dark_light</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" >
+  <style>
+
+
+    /* input#mf-toogle-scheme-mode */
+
+    /* 
+    prefers-color-scheme: dark|light|no-preference
+    @media (prefers-color-scheme: light) {
+      .day.light-scheme   { background: white; color:  #555; }
+      .night.light-scheme { background:  #eee; color: black; }
+    }
+
+    body:has(:is(input#mf-toogle-scheme-mode:target)),
+    body:has(:is(input#mf-toogle-scheme-mode:checked)), 
+    :not(:checked)
+ 
+    body > input#mf-toogle-scheme-mode:target:not(:checked) ~ .doc-container 
+    @media (prefers-color-scheme: light) {
+      .day.light-scheme   { background: white; color:  #555; }
+      .night.light-scheme { background:  #eee; color: black; }
+    }
+    
+
+    body > input#mf-toogle-scheme-mode ~ .doc-container {
+      --h1-color:green;
+      --clr-toogle-checkbox:'un_checked';
+      --clr-toogle-target:'Un_checked';
+    } */
+
+    /* light */
+    :root {
+      --h1-color:darkcyan;
+      --clr-toogle-checkbox:'un checked';
+      --clr-toogle-target:'un checked';
+    }
+    
+    input#mf-toogle-scheme-mode:checked ~ .doc-container,
+    input#mf-toogle-scheme-mode:target ~ .doc-container
+    {
+      --h1-color:blue;
+      --clr-toogle-checkbox:'checked';
+      --clr-toogle-target:'checked';
+    }
+    input#mf-toogle-scheme-mode {
+      display: none;
+    }
+
+    label[for="mf-toogle-scheme-mode"]{
+
+      cursor: pointer;
+      background-color: bisque;
+      border:1px solid #bbb;
+      border-radius:5px ;
+      line-height: 2;
+      padding: 5px 10px;
+    }
+    label[for="mf-toogle-scheme-mode"]:hover{
+      background-color: rgb(180, 112, 9);
+      color:#fff;
+    }
+    label[for="mf-toogle-scheme-mode"]::after{
+      background-color: #fff;
+      color:rgb(180, 112, 9);
+      content: var(--clr-toogle-checkbox);
+      border-radius: 3px;
+      margin-left: 1rem;
+      padding-inline: 3px;
+      font-size: x-small;
+
+    }
+
+
+  
+    /* input#mf-toogle-scheme-mode::after{
+      content: var(--clr-toogle-target);
+      margin-left: 1rem;
+    } */
+
+
+    .target_val::after{
+      content: var(--clr-toogle-target);
+    }
+    .checked_val::after{
+      content: var(--clr-toogle-checkbox);
+    }
+
+
+    h1,h2{
+      color:var(--h1-color,purple);
+    }
+
+    /* :where is a forgiving selector, making this valid. */
+    /* article:has(:where(h2, ul, ::-blahdeath)) {
+      border: 1px solid red;
+    } */
+
+
+  </style>
+</head>
+<body class="mf-doc-wrapper">
+  <p>any element...</p>
+  <input id="mf-toogle-scheme-mode" type="checkbox" />
+  <div class="doc-container">    
+    <label for="mf-toogle-scheme-mode">switch scheme color</label>
+    <hr>
+     <main>
+      <h1>toogle h1 color </h1>
+      <h2>by input checked or url #target</h2>
+      <a href="#mf-toogle-scheme-mode">target mf-toogle-scheme-mode</a>
+      <a href="#any_target">other target anything</a>
+      <a href="css_toogle_dark_light_demo.html">flush page</a>
+      <br>
+      <br>
+      <label for="mf-toogle-scheme-mode">change color</label>
+      <p class="target_val">target val: </p>
+      <p class="checked_val">checked val: </p>
+
+     </main>
+
+  <!-- doc-container end --></div>
+  <!-- 2023-03-03 07:06:34 -->
+  <script type="module">
+    // import {} from './js/lib';
+  </script>
+</body>
+</html>

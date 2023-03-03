@@ -1,7 +1,9 @@
-# git ignore
+# mf git ignore
+.vscode/
 .bak/
 node_module/
-
+dest/
+**/_dev.*/
 *.bat
 *.lnk
 *.env
